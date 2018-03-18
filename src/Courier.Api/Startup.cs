@@ -74,7 +74,7 @@ namespace Courier.Api
                 app.UseDeveloperExceptionPage();
             }
             var dataSeeder = app.ApplicationServices.GetService<IDataSeeder>();
-            dataSeeder.SeedAsync();
+            Task.WaitAll(dataSeeder.SeedAsync());
 
             app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseMvc();
